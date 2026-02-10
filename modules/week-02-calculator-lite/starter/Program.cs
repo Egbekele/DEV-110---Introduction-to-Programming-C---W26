@@ -7,7 +7,7 @@
 *    Assignment: Calculator Lite
 *
 *    Description:   What does this program do?
-*    Program requests user input for name, decimal precision,
+*    This Program requests user input for name, decimal precision,
 *    and two numbers. It performs calculations, handles division by zero,
 *    and displays results with user-chosen formatting.
 *
