@@ -13,6 +13,9 @@
 *
 */
 
+
+
+
 namespace CalculatorLite;
 
 public class Program
@@ -99,7 +102,7 @@ public class Program
             // Formula: ((num1 - num2) / num1) * 100
             // Display with % symbol
 
-            if (num1 != 0)
+            if (num1 != 0 && num2 != 0)
             {
                 double percentDifference = ((num1 - num2) / num1) * 100;
                 string percentResult;
@@ -114,6 +117,7 @@ public class Program
                 }
 
                 Console.WriteLine($"Percentage difference: {percentResult}%");
+
             }
             else
             {
@@ -123,18 +127,22 @@ public class Program
             }
 
 
-            // TODO: Count total calculations performed (int)
+            // TODO: Count total calculations performed (int)a
+
             // Display: "Performed [count] calculations for [name]!"
-            int requiredCalculations = calculationCount;
-            int displayCount = requiredCalculations;
-            if (num2 == 0) displayCount++;
-            Console.WriteLine($"\nPerformed {displayCount} calculations for {userName}!\n");
+            Console.WriteLine($"\nPerformed {calculationCount} calculations for {userName}!\n");
 
             // Ask the user to go repeat
             Console.Write("Do you want to calculate again? (yes/no): ");
             string repeat = Console.ReadLine();
-            continueCalculation = repeat.Trim().ToLower() == "yes" || repeat.Trim().ToLower() == "y";
-            Console.WriteLine();
+            if (repeat == null)
+            {
+                repeat = "";
+            }
+
+            repeat = repeat.Trim().ToLower();
+            continueCalculation = repeat == "yes" || repeat == "y";
+
         }
         Console.WriteLine("\nThank you for using Calculator Lite!");
     }
@@ -145,7 +153,12 @@ public class Program
         while (true)
         {
             Console.Write("Use decimal precision? (yes/no): ");
-            string input = Console.ReadLine().Trim().ToLower();
+            string input = Console.ReadLine();
+            if (input == null)
+            {
+                input = "";
+            }
+            input = input.Trim().ToLower();
             if (input == "yes" || input == "y") return true;
             if (input == "no" || input == "n") return false;
             Console.WriteLine("Invalid input. Please enter yes or no.");
